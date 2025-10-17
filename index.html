@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Profile Card</title>
+</head>
+
+<body>
+    <div class="main">
+        <article data-test-id="test-profile-card" class="card">
+            <header class="card__header">
+                <figure class="avatar-wrapper">
+                    <img src="https://avatars.githubusercontent.com/u/186822077?v=4" alt="Portrait of Olagunju Alameen"
+                        class="avatar" data-test-id="test-user-avatar">
+                </figure>
+                <div class="card__meta">
+                    <h2 class="name" data-test-id="test-user-name">Olagunju Alameen</h2>
+                    <p class="title">Full-stack Developer · Lagos, NG</p>
+                    <p class="time">
+                        Current time (ms):
+                        <span class="time__value" data-test-id="test-user-time" aria-live="polite"></span>
+                    </p>
+                </div>
+            </header>
+
+            <p class="bio" data-test-id="test-user-bio">
+                Full-stack developer crafting smart, data-driven apps with Next.js, TypeScript &amp; Node.js.
+                Turning ideas into impactful digital experiences.
+            </p>
+
+            <section class="section">
+                <h3 class="section__title">Hobbies</h3>
+                <ul class="tag-list" data-test-id="test-user-hobbies">
+                    <li>Coding</li>
+                    <li>Gaming</li>
+                    <li>Reading manhwas</li>
+                    <li>Open-source tinkering</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h3 class="section__title">Dislikes</h3>
+                <ul class="tag-list tag-list--dislikes" data-test-id="test-user-dislikes">
+                    <li>Unscalable code</li>
+                    <li>Unclear documentation</li>
+                </ul>
+            </section>
+
+            <nav class="section section--social" aria-label="Social links">
+                <h3 class="section__title">Find me online</h3>
+                <ul class="social-links" data-test-id="test-user-social-links">
+                    <li><a href="https://github.com/DammyCodes-all" target="_blank" rel="noopener noreferrer"
+                            data-test-id="test-user-social-github">GitHub</a></li>
+                    <li><a href="https://x.com/dammycodes" target="_blank" rel="noopener noreferrer"
+                            data-test-id="test-user-social-x">X</a></li>
+                </ul>
+            </nav>
+        </article>
+    </div>
+
+    <script>
+        const timeTarget = document.querySelector('[data-test-id="test-user-time"]');
+        if (timeTarget) {
+            const updateTime = () => {
+                timeTarget.textContent = String(Date.now());
+            };
+            updateTime();
+            setInterval(updateTime, 1000);
+        }
+    </script>
+</body>
+
+</html>
