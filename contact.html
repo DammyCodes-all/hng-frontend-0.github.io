@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aluminate | Contact</title>
+    <link rel="stylesheet" href="contact.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <h1>Contact</h1>
+        <nav aria-label="Primary">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" aria-current="page">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="contact" data-test-id="data-test-contact-page">
+        <form class="form" data-test-id="data-test-contact-form" id="contact-form" novalidate>
+            <div class="input-container">
+                <label for="fullname">Full name</label>
+                <input type="text" name="fullname" data-test-id="data-test-contact-name" id="fullname" aria-describedby="contact-error-name" required>
+                <p class="input-error" data-test-id="test-contact-error-name" id="contact-error-name" role="alert" aria-live="polite" hidden></p>
+            </div>
+            <div class="input-container">
+                <label for="email">Email</label>
+                <input type="email" name="email" data-test-id="data-test-contact-email" id="email" aria-describedby="contact-error-email" required>
+                <p class="input-error" data-test-id="test-contact-error-email" id="contact-error-email" role="alert" aria-live="polite" hidden></p>
+            </div>
+            <div class="input-container">
+                <label for="subject">Subject</label>
+                <input type="text" name="subject" data-test-id="data-test-contact-subject" id="subject" aria-describedby="contact-error-subject" required>
+                <p class="input-error" data-test-id="test-contact-error-subject" id="contact-error-subject" role="alert" aria-live="polite" hidden></p>
+            </div>
+            <div class="input-container">
+                <label for="message">Message</label>
+                <textarea name="message" data-test-id="data-test-contact-message" id="message" aria-describedby="contact-error-message" required></textarea>
+                <p class="input-error" data-test-id="test-contact-error-message" id="contact-error-message" role="alert" aria-live="polite" hidden></p>
+            </div>
+            <p class="form-success" data-test-id="test-contact-success" role="status" aria-live="polite" hidden></p>
+            <button type="submit">Submit</button>
+        </form>
+    </main>
+    <script>
+        const contactForm = document.querySelector("#contact-form");
+        const fields = {
+            name: document.querySelector("#fullname"),
+            email: document.querySelector("#email"),
+            subject: document.querySelector("#subject"),
+            message: document.querySelector("#message")
+        };
+        const errors = {
+            name: document.querySelector('[data-test-id="test-contact-error-name"]'),
+            email: document.querySelector('[data-test-id="test-contact-error-email"]'),
+            subject: document.querySelector('[data-test-id="test-contact-error-subject"]'),
+            message: document.querySelector('[data-test-id="test-contact-error-message"]')
+        };
+        const successMessage = document.querySelector('[data-test-id="test-contact-success"]');
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        const resetFeedback = () => {
+            Object.keys(errors).forEach((key) => {
+                errors[key].textContent = "";
+                errors[key].hidden = true;
+                fields[key].removeAttribute("aria-invalid");
+            });
+            successMessage.textContent = "";
+            successMessage.hidden = true;
+        };
+
+        contactForm?.addEventListener("submit", (event) => {
+            event.preventDefault();
+            resetFeedback();
+
+            let isValid = true;
+            const values = {
+                name: fields.name.value.trim(),
+                email: fields.email.value.trim(),
+                subject: fields.subject.value.trim(),
+                message: fields.message.value.trim()
+            };
+
+            if (!values.name) {
+                errors.name.textContent = "Please enter your name.";
+                errors.name.hidden = false;
+                fields.name.setAttribute("aria-invalid", "true");
+                isValid = false;
+            }
+
+            if (!values.email) {
+                errors.email.textContent = "Email is required.";
+                errors.email.hidden = false;
+                fields.email.setAttribute("aria-invalid", "true");
+                isValid = false;
+            } else if (!emailPattern.test(values.email)) {
+                errors.email.textContent = "Enter a valid email (name@example.com).";
+                errors.email.hidden = false;
+                fields.email.setAttribute("aria-invalid", "true");
+                isValid = false;
+            }
+
+            if (!values.subject) {
+                errors.subject.textContent = "Please include a subject.";
+                errors.subject.hidden = false;
+                fields.subject.setAttribute("aria-invalid", "true");
+                isValid = false;
+            }
+
+            if (!values.message) {
+                errors.message.textContent = "Message is required.";
+                errors.message.hidden = false;
+                fields.message.setAttribute("aria-invalid", "true");
+                isValid = false;
+            } else if (values.message.length < 10) {
+                errors.message.textContent = "Message should be at least 10 characters.";
+                errors.message.hidden = false;
+                fields.message.setAttribute("aria-invalid", "true");
+                isValid = false;
+            }
+
+            if (!isValid) {
+                return;
+            }
+
+            successMessage.textContent = "Thanks! Your message has been sent.";
+            successMessage.hidden = false;
+            contactForm.reset();
+        });
+    </script>
+</body>
+
+</html>

@@ -9,7 +9,17 @@
 </head>
 
 <body>
-    <div class="main">
+    <header class="site-header">
+        <h1>Home</h1>
+        <nav aria-label="Primary">
+            <ul>
+                <li><a href="index.html" aria-current="page">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main">
         <article data-test-id="test-profile-card" class="card">
             <header class="card__header">
                 <figure class="avatar-wrapper">
@@ -59,9 +69,18 @@
                 </ul>
             </nav>
         </article>
-    </div>
-
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
     <script>
+        const profileCard = document.querySelector('[data-test-id="test-profile-card"]');
+        if (profileCard) {
+            gsap.from(profileCard, { y: 100, duration: 1, opacity: 0, ease: "sine.inOut" });
+        }
+        gsap.from('.site-header', {
+            y: -50,
+            duration: 1,
+            ease: "sine.inOut"
+        })
         const timeTarget = document.querySelector('[data-test-id="test-user-time"]');
         if (timeTarget) {
             const updateTime = () => {
@@ -70,7 +89,9 @@
             updateTime();
             setInterval(updateTime, 1000);
         }
+
     </script>
+
 </body>
 
 </html>
