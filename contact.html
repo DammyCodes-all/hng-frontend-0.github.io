@@ -23,25 +23,34 @@
         <form class="form" data-test-id="data-test-contact-form" id="contact-form" novalidate>
             <div class="input-container">
                 <label for="fullname">Full name</label>
-                <input type="text" name="fullname" data-test-id="data-test-contact-name" id="fullname" aria-describedby="contact-error-name" required>
-                <p class="input-error" data-test-id="test-contact-error-name" id="contact-error-name" role="alert" aria-live="polite" hidden></p>
+                <input type="text" name="fullname" data-test-id="data-test-contact-name" id="fullname"
+                    aria-describedby="contact-error-name" required>
+                <p class="input-error" data-test-id="data-test-contact-error-name" id="contact-error-name" role="alert"
+                    aria-live="polite" hidden></p>
             </div>
             <div class="input-container">
                 <label for="email">Email</label>
-                <input type="email" name="email" data-test-id="data-test-contact-email" id="email" aria-describedby="contact-error-email" required>
-                <p class="input-error" data-test-id="test-contact-error-email" id="contact-error-email" role="alert" aria-live="polite" hidden></p>
+                <input type="email" name="email" data-test-id="data-test-contact-email" id="email"
+                    aria-describedby="contact-error-email" required>
+                <p class="input-error" data-test-id="data-test-contact-error-email" id="contact-error-email"
+                    role="alert" aria-live="polite" hidden></p>
             </div>
             <div class="input-container">
                 <label for="subject">Subject</label>
-                <input type="text" name="subject" data-test-id="data-test-contact-subject" id="subject" aria-describedby="contact-error-subject" required>
-                <p class="input-error" data-test-id="test-contact-error-subject" id="contact-error-subject" role="alert" aria-live="polite" hidden></p>
+                <input type="text" name="subject" data-test-id="data-test-contact-subject" id="subject"
+                    aria-describedby="contact-error-subject" required>
+                <p class="input-error" data-test-id="data-test-contact-error-subject" id="contact-error-subject"
+                    role="alert" aria-live="polite" hidden></p>
             </div>
             <div class="input-container">
                 <label for="message">Message</label>
-                <textarea name="message" data-test-id="data-test-contact-message" id="message" aria-describedby="contact-error-message" required></textarea>
-                <p class="input-error" data-test-id="test-contact-error-message" id="contact-error-message" role="alert" aria-live="polite" hidden></p>
+                <textarea name="message" data-test-id="data-test-contact-message" id="message"
+                    aria-describedby="contact-error-message" required></textarea>
+                <p class="input-error" data-test-id="data-test-contact-error-message" id="contact-error-message"
+                    role="alert" aria-live="polite" hidden></p>
             </div>
-            <p class="form-success" data-test-id="test-contact-success" role="status" aria-live="polite" hidden></p>
+            <p class="form-success" data-test-id="data-test-contact-success" role="status" aria-live="polite" hidden>
+            </p>
             <button type="submit">Submit</button>
         </form>
     </main>
@@ -54,12 +63,12 @@
             message: document.querySelector("#message")
         };
         const errors = {
-            name: document.querySelector('[data-test-id="test-contact-error-name"]'),
-            email: document.querySelector('[data-test-id="test-contact-error-email"]'),
-            subject: document.querySelector('[data-test-id="test-contact-error-subject"]'),
-            message: document.querySelector('[data-test-id="test-contact-error-message"]')
+            name: document.querySelector('[data-test-id="data-test-contact-error-name"]'),
+            email: document.querySelector('[data-test-id="data-test-contact-error-email"]'),
+            subject: document.querySelector('[data-test-id="data-test-contact-error-subject"]'),
+            message: document.querySelector('[data-test-id="data-test-contact-error-message"]')
         };
-        const successMessage = document.querySelector('[data-test-id="test-contact-success"]');
+        const successMessage = document.querySelector('[data-test-id="data-test-contact-success"]');
 
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
