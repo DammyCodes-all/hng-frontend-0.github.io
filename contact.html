@@ -19,13 +19,13 @@
             </ul>
         </nav>
     </header>
-    <main id="contact" data-test-id="test-contact-page">
-        <form class="form" data-test-id="test-contact-form" id="contact-form" novalidate>
+    <main id="contact" data-testid="test-contact-page">
+        <form class="form" data-testid="test-contact-form" id="contact-form" novalidate>
             <div class="input-container">
                 <label for="fullname">Full name</label>
-                <input type="text" name="fullname" data-test-id="test-contact-name" id="fullname"
+                <input type="text" name="fullname" data-testid="test-contact-name" id="fullname"
                     aria-describedby="contact-error-name" required>
-                <p class="input-error" data-test-id="test-contact-error-name" id="contact-error-name" role="alert"
+                <p class="input-error" data-testid="test-contact-error-name" id="contact-error-name" role="alert"
                     aria-live="polite" hidden></p>
             </div>
             <div class="input-container">
@@ -49,9 +49,9 @@
                 <p class="input-error" data-test-id="test-contact-error-message" id="contact-error-message" role="alert"
                     aria-live="polite" hidden></p>
             </div>
-            <p class="form-success" data-test-id="test-contact-success" role="status" aria-live="polite" hidden>
+            <p class="form-success" data-testid="test-contact-success" role="status" aria-live="polite" hidden>
             </p>
-            <button type="submit" data-test-id="test-contact-submit">Submit</button>
+            <button type="submit" data-testid="test-contact-submit">Submit</button>
         </form>
     </main>
     <script>
@@ -63,12 +63,12 @@
             message: document.querySelector("#message")
         };
         const errors = {
-            name: document.querySelector('[data-test-id="test-contact-error-name"]'),
-            email: document.querySelector('[data-test-id="test-contact-error-email"]'),
-            subject: document.querySelector('[data-test-id="test-contact-error-subject"]'),
-            message: document.querySelector('[data-test-id="test-contact-error-message"]')
+            name: document.querySelector('[data-testid="test-contact-error-name"]'),
+            email: document.querySelector('[data-testid="test-contact-error-email"]'),
+            subject: document.querySelector('[data-testid="test-contact-error-subject"]'),
+            message: document.querySelector('[data-testid="test-contact-error-message"]')
         };
-        const successMessage = document.querySelector('[data-test-id="test-contact-success"]');
+        const successMessage = document.querySelector('[data-testid="test-contact-success"]');
 
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
